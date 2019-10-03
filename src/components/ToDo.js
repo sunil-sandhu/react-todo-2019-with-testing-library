@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import Logo from "../assets/logo.png";
+import ReactLogo from "../assets/react.png";
+import TestingLibraryLogo from "../assets/testing-library.png";
 import ToDoItem from "./ToDoItem";
 
 const ToDo = () => {
@@ -15,7 +16,7 @@ const ToDo = () => {
       alert("Please enter a todo!");
       return;
     }
-    const newId = Math.max.apply(null, list.map((t) => t.id)) + 1;
+    const newId = Math.max(...list.map((t) => t.id)) + 1;
     const newToDo = { id: newId, text: toDo };
     setList([...list, newToDo]);
     setToDo("");
@@ -37,9 +38,12 @@ const ToDo = () => {
 
   return (
     <div className="ToDo">
-      <img className="Logo" src={Logo} alt="React logo" />
-      <h1 className="ToDo-Header">React To Do</h1>
-      <h3 className="ToDo-Subheader">now with Hooks!</h3>
+      <img className="Logo" src={ReactLogo} alt="logo" />
+      <img className="Logo" src={TestingLibraryLogo} alt="logo" />
+      <h1 data-testid="header" className="ToDo-Header">
+        React To Do
+      </h1>
+      <h3 className="ToDo-Subheader">tested with Jest + Testing Library</h3>
       <div className="ToDo-Container">
         <div className="ToDo-Content">
           {list.map((item) => {
@@ -48,8 +52,14 @@ const ToDo = () => {
         </div>
 
         <div className="ToDoInput">
-          <input type="text" value={toDo} onChange={handleInput} onKeyPress={handleKeyPress} />
-          <button className="ToDo-Add" onClick={createNewToDoItem}>
+          <input
+            data-testid="todo-input"
+            type="text"
+            value={toDo}
+            onChange={handleInput}
+            onKeyPress={handleKeyPress}
+          />
+          <button data-testid="add" className="ToDo-Add" onClick={createNewToDoItem}>
             +
           </button>
         </div>

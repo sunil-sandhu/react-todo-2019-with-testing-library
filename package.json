@@ -1,5 +1,5 @@
 {
-  "name": "react-todo-2019",
+  "name": "react-todo-tdd-with-testing-library",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -27,5 +27,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^4.1.0",
+    "@testing-library/react": "^9.2.0"
   }
 }
