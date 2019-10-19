@@ -43,7 +43,7 @@ const ToDo = () => {
       <h1 data-testid="header" className="ToDo-Header">
         React To Do
       </h1>
-      <h3 className="ToDo-Subheader">tested with Jest + Testing Library</h3>
+      <h3 className="ToDo-Subheader">tested with Testing Library</h3>
       <div className="ToDo-Container">
         <div className="ToDo-Content">
           {list.map((item) => {
