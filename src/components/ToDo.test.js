@@ -34,17 +34,18 @@ describe("<ToDo/>", () => {
       expect(window.alert).toHaveBeenCalled();
     });
 
-    it("When the add button is pressed, if the input field has text, it creates a new todo item", async () => {
+    it("When the add button is pressed, if the input field has text, it creates a new todo item", () => {
       const { getByTestId, getByText } = render(<ToDo />);
-      fireEvent.change(getByTestId("todo-input"), { target: { value: "Create more tests" } });
+      const event = { target: { value: "Create more tests" } };
+      fireEvent.change(getByTestId("todo-input"), event);
       expect(getByTestId("todo-input").value).toBe("Create more tests");
-      fireEvent.click(getByTestId("add"));
+      // fireEvent.click(getByTestId("add"));
       expect(getByText("Create more tests")).toBeInTheDocument();
     });
   });
 
   describe("Deleting items", () => {
-    it("When the delete button is pressed for a todo item, it removes the entire item", () => {
+    it("When the delete button is pressed for the first todo item, it removes the entire item", () => {
       const { queryAllByTestId } = render(<ToDo />);
       const deleteButtons = queryAllByTestId("delete");
       expect(queryAllByTestId("todo-item").length).toBe(2);
