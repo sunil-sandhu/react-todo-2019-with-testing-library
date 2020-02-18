@@ -39,7 +39,7 @@ describe("<ToDo/>", () => {
       const event = { target: { value: "Create more tests" } };
       fireEvent.change(getByTestId("todo-input"), event);
       expect(getByTestId("todo-input").value).toBe("Create more tests");
-      // fireEvent.click(getByTestId("add"));
+      fireEvent.click(getByTestId("add"));
       expect(getByText("Create more tests")).toBeInTheDocument();
     });
   });
